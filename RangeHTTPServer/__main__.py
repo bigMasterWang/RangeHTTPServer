@@ -9,14 +9,13 @@ The only difference from SimpleHTTPServer is that RangeHTTPServer supports
 development with genomic data files, which tend to be to large to load into the
 browser all at once.
 '''
+import sys
 
-try:
-    # Python3
-    import http.server as SimpleHTTPServer
 
-except ImportError:
-    # Python 2
-    import SimpleHTTPServer
+if(int(sys.version[0])) == 2:
+  import SimpleHTTPServer
+else:
+  import http.server as SimpleHTTPServer
 
 from . import RangeRequestHandler
 
